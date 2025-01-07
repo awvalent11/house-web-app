@@ -17,20 +17,19 @@ type OddsProp = {
 export const OddsCardWeb = (props: OddsCardProps) => {
     const [oddsFormat, setOddsFormat] = useState('homeMoneyLine');
     const toggleOddsFormat = () => {
-        // switch(oddsFormat) {
-        //     case "pointsSpread":
-        //         setOddsFormat("overUnder")
-        //         break;
-        //     case "overUnder":
-        //         setOddsFormat("homeMoneyLine")
-        //         break;
-        //     case "homeMoneyLine":
-        //         setOddsFormat("awayMoneyLine")
-        //         break;
-        //     default:
-        //     setOddsFormat("pointsSpread")
-        window.alert("Hey ;)")
-        // }
+        switch(oddsFormat) {
+            case "pointsSpread":
+                setOddsFormat("overUnder")
+                break;
+            case "overUnder":
+                setOddsFormat("homeMoneyLine")
+                break;
+            case "homeMoneyLine":
+                setOddsFormat("awayMoneyLine")
+                break;
+            default:
+            setOddsFormat("pointsSpread")
+        }
     }
 
     const displayOddsFormat =(oddsFormat: string, props: OddsCardProps) => {
@@ -78,15 +77,14 @@ export const OddsCardWeb = (props: OddsCardProps) => {
                         <h2>
                             {props.game.away} @ {props.game.home}
                         </h2>
-                        <h3>
+                        {/* <h3>
                             {oddsFormat}
-                        </h3>
-                    </Box>
-                    {/* <Box                 
+                        </h3> */}
+                        <Box                 
                         // space='sm'
                         // alignItems='center'
                         // alignContent='center'
-                    >
+                        >
                         <div
                             onClick={() => {
                                 toggleOddsFormat()
@@ -97,7 +95,8 @@ export const OddsCardWeb = (props: OddsCardProps) => {
                                 {displayOddsFormat(oddsFormat, props)}
                             </h3>
                         </div>
-                    </Box> */}
+                        </Box>
+                    </Box>
                     {props.game.startTime && ( 
                         <Box  
                         // direction={"row"} 
