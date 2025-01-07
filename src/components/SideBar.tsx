@@ -15,11 +15,12 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { ResponsiveAppBar } from './ResponsiveAppBar.tsx';
 
-const drawerWidth = 240;
+const drawerWidth = '17%';
 
 export const SideBar = () => {
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', 
+    }}>
       <CssBaseline />
       {/* <ResponsiveAppBar /> */}
       <Drawer 
@@ -34,8 +35,8 @@ export const SideBar = () => {
         variant="permanent"
         anchor="left"
       >
-        <Toolbar />
-        <Divider />
+        {/* <Toolbar /> */}
+        {/* <Divider /> */}
         <List>
           {['Profile', 'Settings', 'NFL', 'MLB', 'CFB', 'Soccer', 'NBA'].map((text, index) => (
             <ListItem key={text} disablePadding>
@@ -50,14 +51,6 @@ export const SideBar = () => {
         </List>
         <Divider />
       </Drawer>
-      {/* <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
-      >
-        <Typography>
-            Hey :)
-        </Typography>
-      </Box> */}
     </Box>
   );
 }

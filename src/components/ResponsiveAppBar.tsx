@@ -36,8 +36,13 @@ export const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position='relative'>
-      <Container maxWidth="xl" >
+    <AppBar
+      position='fixed'
+      sx={{
+        width: '83%'
+      }}
+    >
+      <Container>
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
