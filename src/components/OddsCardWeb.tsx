@@ -53,97 +53,67 @@ export const OddsCardWeb = (props: OddsCardProps) => {
             width: 400,
             height: 270,
             borderRadius: 5,
-            // bgcolor: '#007FFF',
             bgcolor: '#007FFF',
             borderColor: '#000000',
             border: '2px solid',
-            // display: 'flex',
-            // flexDirection: 'column',
             margin: 6
         }}
         >
-            {/* <Box> */}
-                    <Box
-                     sx= {{
-                    // //     space='sm'
-                    //     width: '100%',
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent:'space-between',
-                        paddingX: 4,
-                    //     // alignItems: 'row'
+            <Box
+                sx= {{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent:'space-between',
+                    paddingX: 4,
                     }}
-                    >
-                        <h2>
-                            {props.game.away} @ {props.game.home}
-                        </h2>
-                        {/* <h3>
-                            {oddsFormat}
-                        </h3> */}
-                        <Box                 
-                        // space='sm'
-                        // alignItems='center'
-                        // alignContent='center'
-                        >
-                        <div
-                            onClick={() => {
-                                toggleOddsFormat()
+            >
+                <h2>
+                    {props.game.away} @ {props.game.home}
+                </h2>
+                <Box>
+                    <div
+                        onClick={() => {
+                            toggleOddsFormat()
                             }
                         }
+                    >
+                        <h3>
+                            {displayOddsFormat(oddsFormat, props)}
+                        </h3>
+                    </div>
+                </Box>
+            </Box>
+            {props.game.startTime && ( 
+                <Box>
+                    <h3>
+                        Game Day: {props.game.startTime.format()}
+                    </h3> 
+                </Box>
+            )}
+            <Box>
+                <Box 
+                    sx={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    paddingX: 2,
+                    justifyContent: 'space-evenly'
+                    }}
+                >
+                {props.game.odds.map( odd => {
+                    return(
+                        <Box
+                            sx={{
+                                p:0.75,
+                                borderRadius: 4,
+                                borderColor: '#000000'
+                                }}
                         >
-                            <h3>
-                                {displayOddsFormat(oddsFormat, props)}
-                            </h3>
-                        </div>
+                            <OddsDisplay odd={odd} oddsFormat={oddsFormat}/>
                         </Box>
-                    </Box>
-                    {props.game.startTime && ( 
-                        <Box  
-                        // direction={"row"} 
-                        // space='md' 
-                        // alignItems='center'
-                        >
-                            {/* <Clock8 size='20' color={Colors.zinc600} /> */}
-                            <h3
-                                // flexShrink={1}
-                                // fontFamily='Army-Regular'
-                                // fontSize={14}
-                                // lineHeight={18}
-                                // color={Colors.zinc800}
-                            >
-                                Game Day: {props.game.startTime.format()}
-                            </h3> 
-                        </Box>
-                    )}
-                        <Box 
-                        // direction={"row"} 
-                        // justifyContent='space-between'
-                        >
-                                <Box 
-                                    sx={{
-                                        display: 'flex',
-                                        flexWrap: 'wrap',
-                                        paddingX: 2,
-                                        justifyContent: 'space-evenly'
-                                    }}
-                                // alignItems='flex-start'
-                                >
-                                    {props.game.odds.map( odd => {
-                                        return(
-                                        <Box
-                                            sx={{
-                                                p:0.75,
-                                                borderRadius: 4,
-                                                borderColor: '#000000'
-                                            }}
-                                        >
-                                            <OddsDisplay odd={odd} oddsFormat={oddsFormat}/>
-                                        </Box>
-                                        )}
-                                    )}
-                                </Box>
-                        </Box>   
-            {/* </Box> */}
+                        )}
+                )}
+                </Box>
+            </Box>   
         </Box>
     )
 }
