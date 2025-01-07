@@ -65,6 +65,10 @@ export const OddsDisplay = (props: OddsDisplayProps) => {
                     // backgroundColor={
                     //     "$green200"
                     // }
+                    sx={{
+                        display:'flex',
+                        flexDirection:'column'
+                    }}
                 >
                     <Typography
                         fontFamily='Army-Medium'
@@ -74,6 +78,14 @@ export const OddsDisplay = (props: OddsDisplayProps) => {
                         fontSize={12}
                     >
                         {parseOddsFormat(props.oddsFormat)}
+                    </Typography>
+                    <Typography
+                        fontFamily='Army-Medium'
+                        color={
+                        ""
+                        }
+                        fontSize={12}
+                    >
                         {props.odd.pointsSpread}
                     </Typography>
                 </Box>
