@@ -48,4 +48,24 @@ export const Colors = {
     blue100: '#dbeafe',
     blue400: '#60a5fa',
     blue600: '#2563eb',
+
+    // Intense green, blue, and red 
+    brightGreen: '#beef00',
+    electricRed: '#ff0028',
+    deepGreen: '#657a00',
+    powerBlue: '#1400c6',
+
+    // Bright Power
+    yassQueen: '#ff1d58',
+    sisterSister: '#f75990',
+    crownYellow: '#fff685',
+    blueLight: '#00DDFF',
+    brutalBlue: '#0049B7',
+
+    // Minimal Colors, Purple 90's 
+    iceCold: '#a0d2eb',
+    freezePurple: '#e5eaf5',
+    mediumPurple: '#d0bdf4',
+    purplePain: '#8458B3',
+    heavyPurple: '#a28089',
 }

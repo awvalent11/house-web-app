@@ -37,16 +37,30 @@ export const OddsDisplay = (props: OddsDisplayProps) => {
         }
     }
 
+    const displaySportsbook = (sportsBook: string) => {
+        if(sportsBook == 'Playsugarhouse'){
+            return 'Suga';
+        } else {
+            return sportsBook;
+        }
+    }
+
     return(
         <Stack 
         // space='xs'
+        sx={{
+            border: '1px solid',
+            borderColor: Colors.freezePurple,
+            borderRadius: 0.5,
+            width: '60px'
+        }}
         >
             <Typography
                 fontFamily='Army-Medium'
                 fontSize={12}
-                color={Colors.zinc600}
+                color={Colors.heavyPurple}
             >
-                {props.odd.sportsBook}
+                {displaySportsbook(props.odd.sportsBook)}
             </Typography>
             <Stack
                 // flexDirection={'horizontal'}
@@ -67,13 +81,13 @@ export const OddsDisplay = (props: OddsDisplayProps) => {
                     // }
                     sx={{
                         display:'flex',
-                        flexDirection:'column'
+                        flexDirection:'column',
                     }}
                 >
                     <Typography
                         fontFamily='Army-Medium'
                         color={
-                           ""
+                           Colors.heavyPurple
                         }
                         fontSize={12}
                     >
@@ -82,7 +96,7 @@ export const OddsDisplay = (props: OddsDisplayProps) => {
                     <Typography
                         fontFamily='Army-Medium'
                         color={
-                        ""
+                        Colors.heavyPurple
                         }
                         fontSize={12}
                     >

@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { Colors } from '../assets/Theme.ts';
 
 const pages = ['My Bets', 'Odds Marketplace', 'Bet Probability Calculator'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -34,6 +35,10 @@ export const ResponsiveAppBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleLoginClick = () => {
+    window.alert('You\'re Hitting Me!')
+  }
 
   return (
     <AppBar
@@ -114,7 +119,7 @@ export const ResponsiveAppBar = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            House
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -127,7 +132,49 @@ export const ResponsiveAppBar = () => {
               </Button>
             ))}
           </Box>
-          <Box sx={{ flexGrow: 0 }}>
+          <Box 
+          sx={{ flexGrow: 0 }}
+          display={'flex'}
+          flexDirection={'row'}
+          >
+            <Box
+              sx={{
+              width: 90,
+              height: 40,
+              alignContent: 'center',
+              borderRadius: 2,
+              // bgcolor: '#007FFF',
+              bgcolor: Colors.heavyPurple,
+              borderColor: '#000000',
+              border: '1px solid',
+              paddingX: '0px',
+              marginRight: 1,}}
+              onClick={handleLoginClick}
+            >
+              <Typography
+              variant='button'
+              >
+                Log In
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+              width: 90,
+              height: 40,
+              borderRadius: 2,
+              alignContent: 'center',
+              // bgcolor: '#007FFF',
+              bgcolor: Colors.heavyPurple,
+              borderColor: '#000000',
+              border: '1px solid',
+              marginRight: 1,}}
+            >
+              <Typography
+              variant='button'
+              >
+                Sign Up
+              </Typography>
+            </Box>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />

@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import { exampleGameType } from "../assets/dummydata";
-import { Box, Grid2 } from '@mui/material';
+import { Box, Grid2, Typography } from '@mui/material';
 import { OddsDisplay } from "./OddsDisplay.tsx";
 import { Colors } from "../assets/Theme.ts";
+import localizedFormat from "dayjs/plugin/localizedFormat";
+import dayjs from "dayjs";
+// import localizedFormat from 'dayjs/plugin/localizedFormat' // ES 2015
+
+dayjs.extend(localizedFormat);
+
+dayjs().format("L LT");
 
 type OddsCardProps = {
     game: exampleGameType
@@ -53,10 +60,13 @@ export const OddsCardWeb = (props: OddsCardProps) => {
             width: 400,
             height: 270,
             borderRadius: 5,
-            bgcolor: '#007FFF',
+            // bgcolor: '#007FFF',
+            bgcolor: Colors.iceCold,
             borderColor: '#000000',
             border: '2px solid',
-            margin: 6
+            marginX: 3,
+            marginY: 2
+        
         }}
         >
             <Box
@@ -64,30 +74,35 @@ export const OddsCardWeb = (props: OddsCardProps) => {
                     display: 'flex',
                     flexDirection: 'row',
                     justifyContent:'space-between',
-                    paddingX: 4,
+                    paddingX: '5px',
+                    paddingBottom: '0px'
                     }}
             >
                 <h2>
                     {props.game.away} @ {props.game.home}
                 </h2>
-                <Box>
-                    <div
-                        onClick={() => {
-                            toggleOddsFormat()
-                            }
-                        }
+                <Box
+                onClick={toggleOddsFormat}
+                alignContent={'center'}
+                >
+                    <Typography
+                    variant="body1"
+                    noWrap
                     >
-                        <h3>
-                            {displayOddsFormat(oddsFormat, props)}
-                        </h3>
-                    </div>
+                        {displayOddsFormat(oddsFormat, props)}
+                    </Typography>
                 </Box>
             </Box>
             {props.game.startTime && ( 
-                <Box>
-                    <h3>
-                        Game Day: {props.game.startTime.format()}
-                    </h3> 
+                <Box
+                paddingTop={'0px'}
+                marginBottom={'15px'}
+                >
+                    <Typography
+                    variant="caption"
+                    >
+                        Game Day: {props.game.startTime.format('dddd, h:mmA, MMMM DD, YYYY')}
+                    </Typography> 
                 </Box>
             )}
             <Box>

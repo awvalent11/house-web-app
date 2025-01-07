@@ -42,33 +42,50 @@ export const OddsMarketplace = () => {
 
     return(
         <>
-        <Grid2 
-            container 
-            direction={'column'} 
-            spacing={8} 
-            alignItems={'center'}
-        >
-            <Grid2>
+            <Box
+            alignContent={'center'}
+             position={'relative'}
+             
+             sx={{
+                 top: '80px'
+             }}
+            >
                 <Typography
                     variant="h2"
-                    position={'relative'}
-                    sx={{
-                        top: '80px'
-                    }}
+                    // position={'relative'}
+                    // sx={{
+                    //     top: '80px'
+                    // }}
                 >
                     Odds Marketplace
                 </Typography>
-            </Grid2>      
-            <Grid2 spacing={2}>
+            </Box>      
+            <Grid2 
+            container
+            display={'flex'}
+            position={'relative'}
+            sx = {{
+                top: '100px'
+            }}
+            flexDirection={'row'}
+            flexWrap={'wrap'}
+            spacing={2}
+            width={'100%'}
+            >
                 {games.map(
                     game => {
                         return(
-                            <OddsCardWeb game={game}/>
+                            // <Box
+                                // display={'flex'}
+                                // flexDirection={'row'}
+                                // flexWrap={'wrap'}
+                            // >
+                                   <OddsCardWeb game={game}/>
+                            // </Box>
                             )
                         }
                 )}
             </Grid2>
-        </Grid2>
         </>
     )
 
