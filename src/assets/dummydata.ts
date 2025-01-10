@@ -22,7 +22,6 @@ export type Bet = {
 
 
 export type PastBet = {
-
     id: number
     home: string
     away: string

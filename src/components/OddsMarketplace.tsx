@@ -1,9 +1,9 @@
 import axios from "axios";
-import { dummyGames, PastBet } from "../assets/dummydata.ts";
+import { dummyGames } from "../assets/dummydata.ts";
 import React, {useEffect, useState} from "react";
 import { exampleGameType } from "../assets/dummydata.ts";
 import { OddsCardWeb } from "./OddsCardWeb.tsx";
-import { Box, Grid, Grid2, Typography } from "@mui/material";
+import { Box, Grid2, Typography } from "@mui/material";
 
 type OddsMarketplaceProps = {
     league:String

@@ -46,3 +46,13 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Web App implementation for The House UI
+
+
+A Few Notes about CreateABetForm, 
+
+It should be made so that a user can select all 32 teams as home or away. 
+And once they have selected a home team and an away team, it should validate that game actually exists, 
+and it should ammend the form to display the correct home team and away team. 
+Ergo, if a user enters the Giants as the away team for Week 7, it should auto-update if the Giants are actually home for week 7. And this should be done "onBlur" before the form is validated and submitted. 
+
+Additionally, we need a way to specify which week the bet is for and whether or not it is within the holding period for prospective payment services. 

@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Colors } from '../assets/Theme.ts';
 
-const pages = ['My Bets', 'Odds Marketplace', 'Bet Probability Calculator'];
+const pages = ['My Bets', 'Odds Marketplace', 'Parlay Probability Calculator'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export const ResponsiveAppBar = () => {
