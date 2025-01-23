@@ -1,12 +1,14 @@
 import {useState} from "react"
 import React from 'react';
 import { exampleGameType } from "../assets/dummydata";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { Box, Typography } from "@mui/material";
 import { Colors } from "../assets/Theme.ts";
 
+
 type CreateABetFormProps = {
     games: exampleGameType[]
+    //this is populated from the App.tsx level props depending on the leagueType prop
 }
 
 type SubmitGameType = {
@@ -27,108 +29,132 @@ export const CreateABetForm = (props: CreateABetFormProps) => {
         "NY Jets", "NYG", "DET", "MIA", "CLE", "LA Rams", "ATL"]
 
     const[games, setGames] = useState(props.games);
-    const [awayTeam, setAwayTeam] = useState();
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
     // const onSubmit = (data: SubmitGameType) => console.log(data);
     const onSubmit = (data) => console.log(data)
+
+    const awayTeam = watch('away-team')
+    const homeTeam = watch('home-team')
     
 
     return (
         <Box
-        marginY='200px'
-        
+        marginY={'200px'}
         sx = {{
-            alignContent: 'center',
+
             width: 400,
             height: 270,
             borderRadius: 5,
             display: 'flex', 
-            justifyContent: 'center', 
-            alignItems: 'center', 
             // bgcolor: '#007FFF',
             bgcolor: Colors.iceCold,
             borderColor: '#000000',
             border: '2px solid',
+            alignContent: 'center', 
+            justifyContent: 'center', 
+            alignItems: 'center', 
         }}
         >
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <Box
-                    display={'flex'}
-                    flexDirection={'row'}
-                >
-                  
-                    <select 
-                        {...register("away-team", {required:true})}
-                        className="away-select" 
-                        >
-                        <option value="" disabled>Away</option>
-                        {nflTeams.map((team) => (
-                            <option key={`away ${team}`} value={team}>
-                            {team}
-                            </option>
-                        ))}
-                    </select>
-                    <Typography>
-                        @
-                    </Typography>
-                    <select 
-                        {...register("home-team", {required:true})}
-                        className="home-select" 
-                        >
-                        <option value="" defaultValue={"Home"} disabled>Home</option>
-                        {nflTeams.map((team) => (
-                            <option key={`home ${team}`} value={team}>
-                            {team}
-                            </option>
-                        ))}
-                    </select>
-                </Box>
-                <Box
-                    display={'flex'}
-                    flexDirection={'column'}
-                >
-                    <Box
-                        display={'flex'}
-                        flexDirection={'row'}
-                    >
-                        <Typography>
-                            $
-                        </Typography>
-                        <input 
-                            
-                            type="text" 
-                            {...register("dollarAmount", { required: true })} 
-                            placeholder="100" 
-                        />
-                        {errors.dollarAmount && <span>This field is required</span>}
-                    </Box>
-                    <Box
-                        display={'flex'}
-                        flexDirection={'row'}
-                    >
-                        <select 
-                        {...register("position", {required:true})}
-                        className="form-select" 
-                        >
-                            <option value="" disabled>Odds</option>
-                            <option key={"plus"} value={"plus"}>
-                            +
-                            </option>
-                            <option key={"minus"} value={"minus"}>
-                            -
-                            </option>
-                        </select>
-                        <input 
-                            type="text" 
-                            {...register("odds", { required: true })} 
-                            placeholder="100" 
-                        />
-                        {errors.dollarAmount && <span>This field is required</span>}
-                    </Box>
-                </Box>
+            <Box>
             
-                <input type="submit" />
-            </form>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <select 
+                            {...register("bet-type", {required:true})}
+                            className="bet-type" 
+                            >
+                            <option value="" defaultValue={"Moneyline"}disabled>Bet Type</option>
+                        
+                                <option key={'moneyline'} value={'moneyline'}>Moneyline</option>
+                                <option key={'spread'} value={'spread'}>Spread</option>
+                                <option key={'over-nder'} value={'over-under'}>OverUnder</option>
+                    </select>
+                    <Box
+                        display={'flex'}
+                        flexDirection={'row'}
+                    >
+                    
+                        <select 
+                            {...register("away-team", {required:true})}
+                            className="away-select" 
+                            >
+                            <option value="" disabled>Away</option>
+                            {nflTeams.map((team) => (
+                                <option key={`away ${team}`} value={team}>
+                                {team}
+                                </option>
+                            ))}
+                        </select>
+                        <Typography>
+                            @
+                        </Typography>
+                        <select 
+                            {...register("home-team", {required:true})}
+                            className="home-select" 
+                            >
+                            <option value="" defaultValue={"Home"} disabled>Home</option>
+                            {nflTeams.map((team) => (
+                                <option key={`home ${team}`} value={team}>
+                                {team}
+                                </option>
+                            ))}
+                        </select>
+                    </Box>
+                    <Box>
+                        <select 
+                            {...register("side", {required:true})}
+                            className="side" 
+                            >
+                            <option value={"away-side"} >{awayTeam}</option>
+                            <option value={"home-side"} >{homeTeam}</option>
+                        </select>
+                    </Box>
+                    <Box
+                        display={'flex'}
+                        flexDirection={'column'}
+                    >
+                        <Box
+                            display={'flex'}
+                            flexDirection={'row'}
+                        >
+                            <Typography>
+                                $
+                            </Typography>
+                            <input 
+                                
+                                type="text" 
+                                {...register("dollarAmount", { required: true })} 
+                                placeholder="100" 
+                            />
+                            {errors.dollarAmount && <span>This field is required</span>}
+                        </Box>
+                        <Box
+                            display={'flex'}
+                            flexDirection={'row'}
+                        >
+                            <select 
+                            {...register("position", {required:true})}
+                            className="form-select" 
+                            >
+                                <option value="" disabled>Odds</option>
+                                <option key={"plus"} value={"plus"}>
+                                +
+                                </option>
+                                <option key={"minus"} value={"minus"}>
+                                -
+                                </option>
+                            </select>
+                            <input 
+                                type="text" 
+                                {...register("odds", { required: true })} 
+                                placeholder="100" 
+                            />
+                            {errors.dollarAmount && <span>This field is required</span>}
+                        </Box>
+                    </Box>
+                
+                    <input type="submit" />
+                </form>
+            </Box>
         </Box>
     
     );
