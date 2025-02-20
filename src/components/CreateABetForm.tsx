@@ -23,10 +23,6 @@ type SubmitGameType = {
 // onBlur validation for whether a game exists and is in range of payment service
 
 export const CreateABetForm = (props: CreateABetFormProps) => {
-    const nflTeams = ["PHI", "DEN", "GB", "CAR", "NO", "KC", "MIN",
-        "DAL", "BUF", "CHI", "CIN", "LV", "SF", "ARI", "PIT", "LA Chargers",
-        "TB", "NE", "IND", "WSH", "TEN", "JAX", "HOU", "NY Giants", "SEA",
-        "NY Jets", "NYG", "DET", "MIA", "CLE", "LA Rams", "ATL"]
 
     const[games, setGames] = useState(props.games);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
