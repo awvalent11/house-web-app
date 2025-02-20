@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import React from 'react';
 import { exampleGameType } from "../assets/dummydata";
 import { useForm, useWatch } from "react-hook-form";
@@ -20,6 +20,12 @@ type SubmitGameType = {
         dollarAmount: number
 }
 
+export type testGame = {
+    id: number
+    home: string
+    away: string
+  }
+
 // onBlur validation for whether a game exists and is in range of payment service
 
 export const CreateABetForm = (props: CreateABetFormProps) => {
@@ -30,11 +36,41 @@ export const CreateABetForm = (props: CreateABetFormProps) => {
 
     const[games, setGames] = useState(props.games);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    // const onSubmit = (data: SubmitGameType) => console.log(data);
-    const onSubmit = (data) => console.log(data)
-
+    const onSubmit = (data: SubmitGameType) => console.log(data);
+    // const onSubmit = (data) => console.log(data)
     const awayTeam = watch('away-team')
     const homeTeam = watch('home-team')
+    let otherSide = "Other Side"
+
+    const trimGames = (games: exampleGameType[]) => {
+        let gamesToReturn: testGame[] = []
+        games.map(game => {
+            gamesToReturn.push(
+                { id: game.id,
+                  home: game.home,
+                  away: game.away
+                })
+        })
+        return gamesToReturn;
+    }
+    const trimmedGames: testGame[] = trimGames(props.games)
+
+    const parseHomeAndAway = (awayTeam: String) => {
+        trimmedGames.map((trimmedGame) => {
+           if(trimmedGame.away === awayTeam){
+            otherSide = trimmedGame.home
+           }
+        })
+        // trimmedGames.map((trimmedGame) => {
+        //     if(trimmedGame.home === homeTeam){
+        //      otherSide = trimmedGame.away
+        //     }
+        //  })
+    }
+
+    // useEffect(() => {
+    //     parseHomeAndAway(homeTeam)
+    // }, [awayTeam])
     
 
     return (
@@ -66,7 +102,7 @@ export const CreateABetForm = (props: CreateABetFormProps) => {
                         
                                 <option key={'moneyline'} value={'moneyline'}>Moneyline</option>
                                 <option key={'spread'} value={'spread'}>Spread</option>
-                                <option key={'over-nder'} value={'over-under'}>OverUnder</option>
+                                <option key={'over-under'} value={'over-under'}>OverUnder</option>
                     </select>
                     <Box
                         display={'flex'}
@@ -78,16 +114,16 @@ export const CreateABetForm = (props: CreateABetFormProps) => {
                             className="away-select" 
                             >
                             <option value="" disabled>Away</option>
-                            {nflTeams.map((team) => (
-                                <option key={`away ${team}`} value={team}>
-                                {team}
+                            {trimmedGames.map((trimmedGame) => (
+                                <option key={`${trimmedGame.id}`} value={trimmedGame.away}>
+                                {trimmedGame.away}
                                 </option>
                             ))}
                         </select>
                         <Typography>
-                            @
+                            vs
                         </Typography>
-                        <select 
+                        {/* <select 
                             {...register("home-team", {required:true})}
                             className="home-select" 
                             >
@@ -97,7 +133,10 @@ export const CreateABetForm = (props: CreateABetFormProps) => {
                                 {team}
                                 </option>
                             ))}
-                        </select>
+                        </select> */}
+                        <Typography>
+                            {otherSide}
+                        </Typography>
                     </Box>
                     <Box>
                         <select 
