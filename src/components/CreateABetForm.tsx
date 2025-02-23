@@ -32,10 +32,11 @@ export const CreateABetForm = (props: CreateABetFormProps) => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     // const onSubmit = (data: SubmitGameType) => console.log(data);
     const onSubmit = (data) => console.log(data)
-
-    const awayTeam = watch('away-team')
-    const homeTeam = watch('home-team')
-    
+    console.log(games)
+    const gameToBet = watch('gameToBet')
+    console.log(gameToBet)
+    const wagerGame = games.filter((game) => game.id === gameToBet);
+    console.log(wagerGame)
 
     return (
         <Box
@@ -74,20 +75,19 @@ export const CreateABetForm = (props: CreateABetFormProps) => {
                     >
                     
                         <select 
-                            {...register("away-team", {required:true})}
-                            className="away-select" 
+                            {...register("gameToBet", {required:true})}
+                            className="gameToBet" 
                             >
-                            <option value="" disabled>Away</option>
-                            {nflTeams.map((team) => (
-                                <option key={`away ${team}`} value={team}>
-                                {team}
+                            {games.map((game) => (
+                                <option key={`${game.id}`} value={game.id}>
+                                {game.away} @ {game.home}
                                 </option>
                             ))}
-                        </select>
+{/*                         
                         <Typography>
                             @
                         </Typography>
-                        <select 
+                        
                             {...register("home-team", {required:true})}
                             className="home-select" 
                             >
@@ -96,16 +96,24 @@ export const CreateABetForm = (props: CreateABetFormProps) => {
                                 <option key={`home ${team}`} value={team}>
                                 {team}
                                 </option>
-                            ))}
+                            ))} */}
                         </select>
                     </Box>
                     <Box>
                         <select 
                             {...register("side", {required:true})}
                             className="side" 
-                            >
-                            <option value={"away-side"} >{awayTeam}</option>
-                            <option value={"home-side"} >{homeTeam}</option>
+                        >
+                            
+                        {games.filter((game) => 
+                            game.id == gameToBet
+                        ).map((game) => 
+                            <>
+                                <option value={"side"}>Away: {game.away}</option>
+                                <option value={"side"}>Home: {game.home}</option>
+                            </>
+                        )}
+                            
                         </select>
                     </Box>
                     <Box
