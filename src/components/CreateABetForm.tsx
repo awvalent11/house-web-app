@@ -83,37 +83,21 @@ export const CreateABetForm = (props: CreateABetFormProps) => {
                                 {game.away} @ {game.home}
                                 </option>
                             ))}
-{/*                         
-                        <Typography>
-                            @
-                        </Typography>
-                        
-                            {...register("home-team", {required:true})}
-                            className="home-select" 
-                            >
-                            <option value="" defaultValue={"Home"} disabled>Home</option>
-                            {nflTeams.map((team) => (
-                                <option key={`home ${team}`} value={team}>
-                                {team}
-                                </option>
-                            ))} */}
                         </select>
                     </Box>
                     <Box>
                         <select 
                             {...register("side", {required:true})}
                             className="side" 
-                        >
-                            
-                        {games.filter((game) => 
-                            game.id == gameToBet
-                        ).map((game) => 
-                            <>
-                                <option value={"side"}>Away: {game.away}</option>
-                                <option value={"side"}>Home: {game.home}</option>
-                            </>
-                        )}
-                            
+                        >   
+                            {games.filter((game) => 
+                                game.id == gameToBet
+                            ).map((game) => 
+                                <>
+                                    <option value={"away-side"}>Away: {game.away}</option>
+                                    <option value={"home-side"}>Home: {game.home}</option>
+                                </>
+                            )}
                         </select>
                     </Box>
                     <Box
