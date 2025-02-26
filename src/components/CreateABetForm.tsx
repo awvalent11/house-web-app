@@ -39,6 +39,7 @@ export const CreateABetForm = (props: CreateABetFormProps) => {
     console.log(wagerGame)
 
     return (
+        <>
         <Box
         marginY={'200px'}
         sx = {{
@@ -57,7 +58,6 @@ export const CreateABetForm = (props: CreateABetFormProps) => {
         }}
         >
             <Box>
-            
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <select 
                             {...register("bet-type", {required:true})}
@@ -146,8 +146,9 @@ export const CreateABetForm = (props: CreateABetFormProps) => {
                 
                     <input type="submit" />
                 </form>
+
             </Box>
         </Box>
-    
+    </>
     );
 }
