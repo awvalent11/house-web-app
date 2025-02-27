@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { ResponsiveAppBar } from './components/ResponsiveAppBar.tsx';
 import { SideBar } from './components/SideBar.tsx';
 import { Grid2, } from '@mui/material';
-import { OddsMarketplace } from './components/OddsMarketplace.tsx';
+import { OddsMarketplace } from './components/OddsMarketplace';
 import { CreateABetForm } from './components/CreateABetForm.tsx';
 import { dummyGames } from './assets/dummydata.ts';
 import { SelectLeaugeButton } from './components/SelectALeagueButton.tsx';
