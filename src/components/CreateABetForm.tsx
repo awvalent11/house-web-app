@@ -20,6 +20,8 @@ type SubmitGameType = {
         dollarAmount: number
 }
 
+const WAGERPRODUCERADDRESS = 'http://localhost:3003'
+
 // onBlur validation for whether a game exists and is in range of payment service
 
 export const CreateABetForm = (props: CreateABetFormProps) => {
@@ -31,8 +33,19 @@ export const CreateABetForm = (props: CreateABetFormProps) => {
     const[games, setGames] = useState(props.games);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     // const onSubmit = (data: SubmitGameType) => console.log(data);
-    const onSubmit = (data) => console.log(data)
-    console.log(games)
+    const onSubmit = (data) => {
+        // const id = uuidv4()
+        // const formData = {...data, id}
+        // console.log('Form Data with ID:', formData)
+        // axios.post(
+        //     URL:`${WAGERPRODUCERADDRESS}`
+        //     body:{
+        //         formData
+        //     }
+        // )
+        alert("You're hitting me")
+    }
+    // console.log(games)
     const gameToBet = watch('gameToBet')
     console.log(gameToBet)
     const wagerGame = games.filter((game) => game.id === gameToBet);
