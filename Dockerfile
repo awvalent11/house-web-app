@@ -1,19 +1,20 @@
-# Fetching the latest node image on alpine linux
-FROM node:alpine AS development
+# Use the latest LTS version of Node.js
+FROM node:18-alpine
 
-# Declaring env
-ENV NODE_ENV development
-
-# Setting up the work directory
+# Set the working directory inside the container
 WORKDIR /house-web-app
 
-# Installing dependencies
-COPY ./package*.json /house-web-app/
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
+# Install dependencies
 RUN npm install
 
-# Copying all the files in our project
+# Copy the rest of your application files
 COPY . .
 
-# Starting our application
-CMD ["npm","start"]
+# Expose the port your app runs on
+EXPOSE 3000
+
+# Define the command to run your app
+CMD ["npm", "start"]

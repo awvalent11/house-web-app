@@ -3,6 +3,7 @@ import { exampleGameType } from "../assets/dummydata";
 import { useForm, useWatch } from "react-hook-form";
 import { Box, Typography } from "@mui/material";
 import { Colors } from "../assets/Theme.ts";
+import {useState} from "react";
 
 type CreateAMoneylineFormProps = {
     games: exampleGameType[]
@@ -11,22 +12,42 @@ type CreateAMoneylineFormProps = {
 
 
 export const CreateAMoneylineForm = (props: CreateAMoneylineFormProps) => {
+    const [games, setGames] = useState(props.games)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const gameToBet = watch('gameToBet')
+    const onSubmit = (data) => console.log(data)
+    const wagerGame = props.games.filter((game) => game.id === gameToBet);
 
 
     return(
-        <Box>
-            <form onSubmit={handleSubmit(handleSubmit)}>
-                <select
-                    {...register("bet-type", {required:true})}
-                    className="bet-type"
-                >
-                    <option value="" defaultValue={"Moneyline"}disabled>Bet Type</option>
+        <Box
+            marginY={'200px'}
+            sx = {{
+                width: 400,
+                height: 270,
+                borderRadius: 5,
+                display: 'flex',
+                flexDirection: 'column',
+                // bgcolor: '#007FFF',
+                bgcolor: Colors.iceCold,
+                borderColor: '#000000',
+                border: '2px solid',
+                alignContent: 'center',
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}
+        >
+            <form onSubmit={handleSubmit(onSubmit)}>
+                {/*<select*/}
+                {/*    {...register("bet-type", {required:true})}*/}
+                {/*    className="bet-type"*/}
+                {/*>*/}
+                {/*    <option value="" defaultValue={"Moneyline"}disabled>Bet Type</option>*/}
 
-                    <option key={'moneyline'} value={'moneyline'}>Moneyline</option>
-                    <option key={'spread'} value={'spread'}>Spread</option>
-                    <option key={'over-nder'} value={'over-under'}>OverUnder</option>
-                </select>
+                {/*    <option key={'moneyline'} value={'moneyline'}>Moneyline</option>*/}
+                {/*    <option key={'spread'} value={'spread'}>Spread</option>*/}
+                {/*    <option key={'over-nder'} value={'over-under'}>OverUnder</option>*/}
+                {/*</select>*/}
                 <Box
                     display={'flex'}
                     flexDirection={'row'}
@@ -49,7 +70,7 @@ export const CreateAMoneylineForm = (props: CreateAMoneylineFormProps) => {
                         className="side"
                     >
                         {props.games.filter((game) =>
-                            game.id == props.gameToBet
+                            game.id == gameToBet
                         ).map((game) =>
                             <>
                                 <option value={"away-side"}>Away: {game.away}</option>
