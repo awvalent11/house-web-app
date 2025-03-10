@@ -18,6 +18,7 @@ export const SelectLeaugeButton = (props: SelectLeaugeButtonProps) => {
                 {...register("leagueType", {required:true})}
                 className="leagueType-button" 
             >
+                Select A League
                 <option value="" defaultValue={"NFL"}disabled>NFL</option>
                 <option key={'MLB'} value={'moneyline'}>Moneyline</option>
                 <option key={'spread'} value={'spread'}>Spread</option>

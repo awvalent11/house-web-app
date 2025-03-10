@@ -14,10 +14,28 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { ResponsiveAppBar } from './ResponsiveAppBar.tsx';
+import  NFLlogo from './nfl-logo.svg'
 
+
+
+type SideBarProps = {
+    setLeagueType:  React.Dispatch<React.SetStateAction<string>>
+}
 const drawerWidth = '17%';
 
-export const SideBar = () => {
+export const SideBar = (props: SideBarProps) => {
+
+    const parseLogo = (index: number) => {
+        switch(index) {
+            case 2:
+                return (
+                     <img src={NFLlogo} alt="NFL" height={'40px'} width={'40px'}/>)
+            default:
+                return (<MailIcon/>)
+        }
+    }
+
+
   return (
     <Box sx={{ display: 'flex', 
     }}>
@@ -42,7 +60,7 @@ export const SideBar = () => {
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                    {parseLogo(index)}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItemButton>
