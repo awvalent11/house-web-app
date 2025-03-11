@@ -15,11 +15,13 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { ResponsiveAppBar } from './ResponsiveAppBar.tsx';
 import  NFLlogo from './nfl-logo.svg'
-
+import MLBlogo from './mlb_logo_icon_248446.svg'
+import Heisman from '../assets/heisman_trophy.png'
 
 
 type SideBarProps = {
-    setLeagueType:  React.Dispatch<React.SetStateAction<string>>
+    handleLeagueType: void
+    // setLeagueType:  React.Dispatch<React.SetStateAction<string>>
 }
 const drawerWidth = '17%';
 
@@ -30,9 +32,20 @@ export const SideBar = (props: SideBarProps) => {
             case 2:
                 return (
                      <img src={NFLlogo} alt="NFL" height={'40px'} width={'40px'}/>)
+            case 3:
+                return (
+                    <img src={MLBlogo} alt="NFL" height={'40px'} width={'40px'}/>)
+            case 4:
+                return (
+                    <img src={Heisman} alt="NFL" height={'40px'} width={'40px'}/>)
             default:
                 return (<MailIcon/>)
         }
+    }
+
+    const handleClick = (leagueType: string) => {
+        // @ts-ignore
+        props.handleLeagueType(leagueType)
     }
 
 
@@ -57,7 +70,7 @@ export const SideBar = (props: SideBarProps) => {
         {/* <Divider /> */}
         <List>
           {['Profile', 'Settings', 'NFL', 'MLB', 'CFB', 'Soccer', 'NBA'].map((text, index) => (
-            <ListItem key={text} disablePadding>
+            <ListItem key={text} disablePadding onClick={() => handleClick(text)}>
               <ListItemButton>
                 <ListItemIcon>
                     {parseLogo(index)}

@@ -4,7 +4,7 @@ import './App.css';
 import { ResponsiveAppBar } from './components/ResponsiveAppBar.tsx';
 // @ts-ignore
 import { SideBar } from './components/SideBar.tsx';
-import { Grid2, } from '@mui/material';
+import {Grid2, Typography,} from '@mui/material';
 // @ts-ignore
 import { OddsMarketplace } from './components/OddsMarketplace.tsx';
 // @ts-ignore
@@ -25,35 +25,30 @@ export const App = () => {
 
   }, [leagueType])
 
-  if(leagueType==="NFL"){
+  const handleLeagueType  = (leagueType: string) => {
+      setLeagueType(leagueType)
+  }
+
     return (
       <div className="App">
         <Grid2 container>
           <Grid2 size={3}>
-              <SideBar/>
+              <SideBar handleLeagueType={handleLeagueType}/>
           </Grid2>
           <Grid2 size={9} alignItems={"center"}>
             <ResponsiveAppBar />
+              <Typography
+                  position={'relative'}
+                  marginTop={'100px'}
+                  marginBottom={'0px'}
+                  variant={"h3"}>
+                  {leagueType}
+              </Typography>
              <OddsMarketplace />
             <CreateABetForm games={nflGames}/>
           </Grid2>
         </Grid2>
       </div>
     )
-  } else if(leagueType==="MLB"){
-    return (
-      <div className="App">
-        <Grid2 container>
-          <Grid2 size={3}>
-              <SideBar setLeagueType={setLeagueType}/>
-          </Grid2>
-          <Grid2 size={9} alignItems={"center"}>
-            <ResponsiveAppBar />
-             <OddsMarketplace leagueType={leagueType}/>
-            <CreateABetForm games={mlbGames}/>
-          </Grid2>
-        </Grid2>
-      </div>
-    );
-  }
+
 }

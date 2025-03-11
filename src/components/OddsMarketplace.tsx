@@ -47,7 +47,7 @@ export const OddsMarketplace = () => {
              position={'relative'}
              
              sx={{
-                 top: '80px'
+                 top: '20px'
              }}
             >
                 <Typography
@@ -65,7 +65,7 @@ export const OddsMarketplace = () => {
             display={'flex'}
             position={'relative'}
             sx = {{
-                top: '100px'
+                top: '40px'
             }}
             flexDirection={'row'}
             flexWrap={'wrap'}
