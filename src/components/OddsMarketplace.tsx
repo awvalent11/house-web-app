@@ -23,7 +23,7 @@ export type Odds = {
     sportsBook: String
 }
 
-export const OddsMarketplace = () => {
+export const OddsMarketplace = (props: OddsMarketplaceProps) => {
     const [games, setGames] = useState(dummyGames);
     // useEffect(() => {
     //     // axios.get("http://k8s-game2048-nflingre-04613a5480-994585251.us-east-2.elb.amazonaws.com/gambling-api/nfl-week-games")
@@ -52,10 +52,6 @@ export const OddsMarketplace = () => {
             >
                 <Typography
                     variant="h2"
-                    // position={'relative'}
-                    // sx={{
-                    //     top: '80px'
-                    // }}
                 >
                     Odds Marketplace
                 </Typography>

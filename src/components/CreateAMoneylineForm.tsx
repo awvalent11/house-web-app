@@ -12,7 +12,6 @@ type CreateAMoneylineFormProps = {
 
 
 export const CreateAMoneylineForm = (props: CreateAMoneylineFormProps) => {
-    const [games, setGames] = useState(props.games)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const gameToBet = watch('gameToBet')
     const onSubmit = (data) => console.log(data)

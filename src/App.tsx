@@ -19,10 +19,14 @@ export const App = () => {
   const [nflGames, setNFLGames] = useState(dummyGames);
   const [mlbGames, setMLBGames] = useState([]);
   const [leagueType, setLeagueType] = useState("NFL");
-  useEffect(()=> {
-    // axios.get(/*odds-api/leagueType*/
-    // reaches out to odds-api and populates this upcoming week's games into state
 
+  useEffect(()=> {
+    // axios.get(http://scraper-api:8085/scrape)
+    //      .then(res => res.data)
+    //      .then(data => setMLBGames(data))
+    // reaches out to odds-api and populates this upcoming week's games into state
+    //this should be a paganation thing where the ancillary leagueType data is loaded after primary
+    //leagueType so there is not a re-render whenever the user toggle leagueType
   }, [leagueType])
 
   const handleLeagueType  = (leagueType: string) => {

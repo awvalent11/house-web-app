@@ -14,8 +14,8 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { ResponsiveAppBar } from './ResponsiveAppBar.tsx';
-import  NFLlogo from './nfl-logo.svg'
-import MLBlogo from './mlb_logo_icon_248446.svg'
+import  NFLlogo from '../assets/nfl-logo.svg'
+import MLBlogo from '../assets/mlb_logo_icon_248446.svg'
 import Heisman from '../assets/heisman_trophy.png'
 
 
