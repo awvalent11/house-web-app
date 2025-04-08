@@ -1,8 +1,7 @@
 import axios from "axios";
-import { dummyGames } from "../assets/dummydata.ts";
+import { dummyGames } from "../assets/dummydata";
 import React, {useEffect, useState} from "react";
-import { exampleGameType } from "../assets/dummydata.ts";
-import { OddsCardWeb } from "./OddsCardWeb.tsx";
+import { OddsCardWeb } from "./OddsCardWeb";
 import { Box, Grid2, Typography } from "@mui/material";
 
 type OddsMarketplaceProps = {

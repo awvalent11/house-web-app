@@ -13,6 +13,7 @@ import { CreateABetForm } from './components/CreateABetForm.tsx';
 import { dummyGames } from './assets/dummydata.ts';
 // @ts-ignore
 import { SelectLeaugeButton } from './components/SelectALeagueButton.tsx';
+import axios from "axios";
 
 
 export const App = () => {
@@ -21,9 +22,9 @@ export const App = () => {
   const [leagueType, setLeagueType] = useState("NFL");
 
   useEffect(()=> {
-    // axios.get(http://scraper-api:8085/scrape)
-    //      .then(res => res.data)
-    //      .then(data => setMLBGames(data))
+    axios.get('http://web-app-to-scraper-api-svc:83/scrape')
+         .then(res => console.log(res.data))
+         // .then(data => setMLBGames(data))
     // reaches out to odds-api and populates this upcoming week's games into state
     //this should be a paganation thing where the ancillary leagueType data is loaded after primary
     //leagueType so there is not a re-render whenever the user toggle leagueType
