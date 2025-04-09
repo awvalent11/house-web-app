@@ -43,7 +43,7 @@ var nfl_logo_svg_1 = __importDefault(require("../assets/nfl-logo.svg"));
 // @ts-ignore
 var mlb_logo_icon_248446_svg_1 = __importDefault(require("../assets/mlb_logo_icon_248446.svg"));
 // @ts-ignore
-var heisman_trophy_svg_1 = __importDefault(require("../assets/heisman_trophy.svg"));
+var heisman_trophy_png_1 = __importDefault(require("../assets/heisman_trophy.png"));
 var drawerWidth = '17%';
 var SideBar = function (props) {
     var parseLogo = function (index) {
@@ -53,7 +53,7 @@ var SideBar = function (props) {
             case 3:
                 return (React.createElement("img", { src: mlb_logo_icon_248446_svg_1["default"], alt: "NFL", height: '40px', width: '40px' }));
             case 4:
-                return (React.createElement("img", { src: heisman_trophy_svg_1["default"], alt: "NFL", height: '40px', width: '40px' }));
+                return (React.createElement("img", { src: heisman_trophy_png_1["default"], alt: "NFL", height: '40px', width: '40px' }));
             default:
                 return (React.createElement(Mail_1["default"], null));
         }

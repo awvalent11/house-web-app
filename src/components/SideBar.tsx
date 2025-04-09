@@ -17,7 +17,7 @@ import  NFLlogo from '../assets/nfl-logo.svg'
 // @ts-ignore
 import MLBlogo from '../assets/mlb_logo_icon_248446.svg'
 // @ts-ignore
-import Heisman from '../assets/heisman_trophy.svg'
+import Heisman from '../assets/heisman_trophy.png'
 
 
 type SideBarProps = {

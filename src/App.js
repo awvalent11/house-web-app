@@ -22,9 +22,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 exports.__esModule = true;
 exports.App = void 0;
 var react_1 = __importStar(require("react"));
@@ -40,14 +37,13 @@ var OddsMarketplace_tsx_1 = require("./components/OddsMarketplace.tsx");
 var CreateABetForm_tsx_1 = require("./components/CreateABetForm.tsx");
 // @ts-ignore
 var dummydata_ts_1 = require("./assets/dummydata.ts");
-var axios_1 = __importDefault(require("axios"));
 var App = function () {
     var _a = (0, react_1.useState)(dummydata_ts_1.dummyGames), nflGames = _a[0], setNFLGames = _a[1];
     var _b = (0, react_1.useState)([]), mlbGames = _b[0], setMLBGames = _b[1];
     var _c = (0, react_1.useState)("NFL"), leagueType = _c[0], setLeagueType = _c[1];
     (0, react_1.useEffect)(function () {
-        axios_1["default"].get('http://web-app-to-scraper-api-svc:83/scrape')
-            .then(function (res) { return console.log(res.data); });
+        // axios.get('http://web-app-to-scraper-api-svc:83/scrape')
+        //      .then(res => console.log(res.data))
         // .then(data => setMLBGames(data))
         // reaches out to odds-api and populates this upcoming week's games into state
         //this should be a paganation thing where the ancillary leagueType data is loaded after primary

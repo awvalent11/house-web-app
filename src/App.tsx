@@ -22,8 +22,8 @@ export const App = () => {
   const [leagueType, setLeagueType] = useState("NFL");
 
   useEffect(()=> {
-    axios.get('http://web-app-to-scraper-api-svc:83/scrape')
-         .then(res => console.log(res.data))
+    // axios.get('http://web-app-to-scraper-api-svc:83/scrape')
+    //      .then(res => console.log(res.data))
          // .then(data => setMLBGames(data))
     // reaches out to odds-api and populates this upcoming week's games into state
     //this should be a paganation thing where the ancillary leagueType data is loaded after primary
