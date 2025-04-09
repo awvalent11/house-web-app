@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { exampleGameType } from "../assets/dummydata";
 import { Box, Grid2, Typography } from '@mui/material';
-import { OddsDisplay } from "./OddsDisplay.tsx";
-import { Colors } from "../assets/Theme.ts";
+import { OddsDisplay } from "./OddsDisplay";
+import { Colors } from "../assets/Theme";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import dayjs from "dayjs";
 // import localizedFormat from 'dayjs/plugin/localizedFormat' // ES 2015

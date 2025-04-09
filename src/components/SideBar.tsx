@@ -11,12 +11,13 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import { ResponsiveAppBar } from './ResponsiveAppBar.tsx';
+// @ts-ignore
 import  NFLlogo from '../assets/nfl-logo.svg'
+// @ts-ignore
 import MLBlogo from '../assets/mlb_logo_icon_248446.svg'
-import Heisman from '../assets/heisman_trophy.png'
+// @ts-ignore
+import Heisman from '../assets/heisman_trophy.svg'
 
 
 type SideBarProps = {

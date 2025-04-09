@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 // @ts-ignore
 import { ResponsiveAppBar } from './components/ResponsiveAppBar.tsx';

@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { Colors } from '../assets/Theme.ts';
+import { Colors } from '../assets/Theme';
 
 const pages = ['My Bets', 'Odds Marketplace', 'Parlay Probability Calculator'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];

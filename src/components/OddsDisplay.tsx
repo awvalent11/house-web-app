@@ -1,7 +1,7 @@
 import {Box, Stack, Typography } from "@mui/material";
-import {Colors} from '../assets/Theme.ts';
+import {Colors} from '../assets/Theme';
 import dayjs from "dayjs";
-import { odd } from "../assets/dummydata.ts";
+import { odd } from "../assets/dummydata";
 import React from "react";
 
 

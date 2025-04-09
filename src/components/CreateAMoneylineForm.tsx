@@ -1,8 +1,8 @@
-// import React from "react";
+import React from "react";
 import { exampleGameType } from "../assets/dummydata";
 import { useForm, useWatch } from "react-hook-form";
 import { Box, Typography } from "@mui/material";
-import { Colors } from "../assets/Theme.ts";
+import { Colors } from "../assets/Theme";
 import {useState} from "react";
 
 type CreateAMoneylineFormProps = {

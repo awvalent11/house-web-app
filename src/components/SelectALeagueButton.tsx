@@ -1,4 +1,4 @@
-import { Button } from "@mui/material"
+import React from 'react'
 import { useForm } from "react-hook-form"
 
 
@@ -9,6 +9,7 @@ type SelectLeaugeButtonProps = {
 export const SelectLeaugeButton = (props: SelectLeaugeButtonProps) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (leagueType: String) => {
+        // @ts-ignore
         props.setLeagueType(leagueType);
     }
 
