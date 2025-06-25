@@ -13,8 +13,8 @@ spec:
         app.kubernetes.io/name: house-web-app
     spec:
       containers:
-        - image: house-web-app:0.2.3
+        - image: house-web-app:0.2.5
           imagePullPolicy: Never
           name: house-web-app-container
           ports:
-            - containerPort: 80
+            - containerPort: 3000

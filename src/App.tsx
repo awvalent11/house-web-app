@@ -15,15 +15,59 @@ import { dummyGames } from './assets/dummydata.ts';
 import { SelectLeaugeButton } from './components/SelectALeagueButton.tsx';
 import axios from "axios";
 
+type MLBTeamType = {
+    team: String
+    odds: number[]
+}
+
+
+function cast(mixedArray, n ) {
+    const arrayToReturn = [];
+
+    // Use a standard for loop to control the index
+    for (let i = 0; i < mixedArray.length; i++) {
+        // Check if the current element is a string using the typeof operator
+        if (typeof mixedArray[i] === 'string') {
+            // If it's a string, start extracting the next 'n' elements
+            // We start the extraction from the element after the current string (i + 1)
+            const team = new MLBTeam(mixedArray[i],[])
+            for (let j = 0; j < n; j++) {
+                // Calculate the index of the element to be added
+                const nextIndex = i + 1 + j;
+
+                // Check if the nextIndex is within the bounds of the array
+                if (nextIndex < mixedArray.length) {
+                    // Add the element to the new array
+                    team.odds.push(mixedArray[nextIndex]);
+                } else {
+                    arrayToReturn.push(team)
+                    // Break the inner loop if we reach the end of the array
+                    break;
+                }
+            }
+            // After finding a string and adding the next n elements,
+            // you might want to skip the elements you just added in the main loop.
+            // This line is optional, depending on your desired behavior.
+            // If you want to continue scanning from the element after the block you just added, uncomment the line below.
+            i = i + n;
+        }
+    }
+    return arrayToReturn;
+}
+
 
 export const App = () => {
   const [nflGames, setNFLGames] = useState(dummyGames);
   const [mlbGames, setMLBGames] = useState([]);
-  const [leagueType, setLeagueType] = useState("NFL");
+  const [leagueType, setLeagueType] = useState("MLB");
+
 
   useEffect(()=> {
-    // axios.get('http://web-app-to-scraper-api-svc:83/scrape')
-    //      .then(res => console.log(res.data))
+    // console.log("You're hitting me!")
+    axios.get('http://web-app-to-scraper-api-svc/scrape')
+    // axios.get('http://localhost:8081/scrape')
+         .then(res => cast(res.data, 10))
+         .then(data => setMLBGames(data))
          // .then(data => setMLBGames(data))
     // reaches out to odds-api and populates this upcoming week's games into state
     //this should be a paganation thing where the ancillary leagueType data is loaded after primary
