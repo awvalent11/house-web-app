@@ -63,8 +63,9 @@ export const App = () => {
 
 
   useEffect(()=> {
+    console.log("You're hitting the useEffect!");
     // console.log("You're hitting me!")
-    axios.get('http://web-app-to-scraper-api-svc/scrape')
+    axios.get('http://web-app-to-scraper-api-svc:83/scrape')
     // axios.get('http://localhost:8081/scrape')
          .then(res => cast(res.data, 10))
          .then(data => setMLBGames(data))
