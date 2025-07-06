@@ -1,7 +1,7 @@
 import {useState} from "react"
 import { exampleGameType } from "../assets/dummydata";
-import { useForm, useWatch } from "react-hook-form";
-import {Box, Select, Typography} from "@mui/material";
+import { useForm } from "react-hook-form";
+import {Box, Select} from "@mui/material";
 import {CreateAMoneylineForm} from "./CreateAMoneylineForm";
 import MenuItem from "@mui/material/MenuItem";
 import React from "react";

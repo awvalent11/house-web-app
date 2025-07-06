@@ -5,7 +5,7 @@ import { OddsCardWeb } from "./OddsCardWeb";
 import { Box, Grid2, Typography } from "@mui/material";
 
 type OddsMarketplaceProps = {
-    league:String
+    leagueType:String
 }
 
 export type Game = {
@@ -21,6 +21,12 @@ export type Odds = {
     moneyLine: number
     sportsBook: String
 }
+
+const dummyData = ['Yankees', '-169', '-167', '-165', '-168', '-170', '-165', '-164', '-165', '-165',
+    '-168', 'Blue', 'Jays', '+138', '+140', '+140', '+138', '+143', '+140', '+138', '+140', '+138', '+138',
+    'Padres', '+144', '+145', '+135', '+137', '+140', '+140', '+136', '+138', '+138', '+137',
+    'Phillies', '-176', '-173', '-160', '-167', '-165', '-165', '-162', '-159', '-167', '-167',
+    'Cardinals', '+140', '+135', '+140', '+130', '+130', '+135', '+132', '+138', '+138', '+130']
 
 export const OddsMarketplace = (props: OddsMarketplaceProps) => {
     const [games, setGames] = useState(dummyGames);

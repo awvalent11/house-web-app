@@ -21,7 +21,7 @@ type MLBTeamType = {
 }
 
 
-function cast(mixedArray, n ) {
+export const cast = (mixedArray, n ) => {
     const arrayToReturn = [];
 
     // Use a standard for loop to control the index

@@ -1,4 +1,4 @@
-class  MLBTeam {
+class MLBTeam {
     private team: string;
     odds: number[];
     constructor(team: string, odds: number[]) {
@@ -6,3 +6,5 @@ class  MLBTeam {
         this.odds = odds;
     }
 }
+
+export default MLBTeam;
