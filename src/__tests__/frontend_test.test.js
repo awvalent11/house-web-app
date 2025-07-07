@@ -61,24 +61,22 @@ describe('cast function', () => {
                     // If it's a string, start extracting the next 'n' elements
                     // We start the extraction from the element after the current string (i + 1)
                     const team = new MLBTeam(mixedArray[i],[])
-                    // for (let j = 0; j < n; j++) {
-                    //     // Calculate the index of the element to be added
-                    //     const nextIndex = i + 1 + j;
-                    //     // Check if the nextIndex is within the bounds of the array
-                    //     if (nextIndex < mixedArray.length) {
-                    //         // Add the element to the new array
-                    //             team.odds.push(mixedArray[nextIndex])
-                    //     } else {
-                            arrayToReturn.push(team)
-                    //         // Break the inner loop if we reach the end of the array
-                    //         break;
-                    //     }
-                    // }
+                    for (let j = 0; j < n; j++) {
+                          // Calculate the index of the element to be added
+                          const nextIndex = i + 1 + j;
+                          // Check if the nextIndex is within the bounds of the array
+                          if (nextIndex < mixedArray.length) {
+                              // Add the element to the new array
+                                  team.odds.push(Number(mixedArray[nextIndex]))
+                              // team.odds.push(1)
+                          }
+                    }
                     // After finding a string and adding the next n elements,
                     // you might want to skip the elements you just added in the main loop.
                     // This line is optional, depending on your desired behavior.
                     // If you want to continue scanning from the element after the block you just added, uncomment the line below.
-                    // i = i + n;
+                    arrayToReturn.push(team)
+                    i = i + n;
                 }
             }
             return arrayToReturn;
@@ -92,8 +90,8 @@ describe('cast function', () => {
         console.log(result)
         // Verify TeamA
         expect(result[0]).toBeInstanceOf(MLBTeam);
-        // expect(result[0].name).toBe('Yankees');
-        // expect(result[0].odds).toEqual([-169, -167, -165, -168, -170, -165, -164, -165, -165, -168]);
+        expect(result[0].team).toBe('Yankees');
+        expect(result[0].odds).toEqual([-169, -167, -165, -168, -170, -165, -164, -165, -165, -168]);
 
         // Verify TeamB
         // expect(result[1]).toBeInstanceOf(MLBTeam);
