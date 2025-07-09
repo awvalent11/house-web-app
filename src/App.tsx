@@ -14,41 +14,32 @@ import { dummyGames } from './assets/dummydata.ts';
 // @ts-ignore
 import { SelectLeaugeButton } from './components/SelectALeagueButton.tsx';
 import axios from "axios";
+import MLBTeam from "./MLBTeam";
+import {dummyData} from './__tests__/frontend_test.test.js'
 
 type MLBTeamType = {
     team: String
     odds: number[]
 }
 
+export const teams = [
+    'Yankees', 'Padres', 'Phillies', 'Cardinals', 'Twins', 'Marlins', 'Pirates',
+    'Tigers', 'Nationals', 'Blue', 'Athletics', 'Royals', 'Mariners', 'Dodgers'
+]
 
-export const cast = (mixedArray, n ) => {
+
+export  const cast = (mixedArray, n ) => {
     const arrayToReturn = [];
-
-    // Use a standard for loop to control the index
     for (let i = 0; i < mixedArray.length; i++) {
-        // Check if the current element is a string using the typeof operator
-        if (typeof mixedArray[i] === 'string') {
-            // If it's a string, start extracting the next 'n' elements
-            // We start the extraction from the element after the current string (i + 1)
+        if (teams.includes(mixedArray[i])) {
             const team = new MLBTeam(mixedArray[i],[])
             for (let j = 0; j < n; j++) {
-                // Calculate the index of the element to be added
                 const nextIndex = i + 1 + j;
-
-                // Check if the nextIndex is within the bounds of the array
                 if (nextIndex < mixedArray.length) {
-                    // Add the element to the new array
-                    team.odds.push(mixedArray[nextIndex]);
-                } else {
-                    arrayToReturn.push(team)
-                    // Break the inner loop if we reach the end of the array
-                    break;
+                    team.odds.push(Number(mixedArray[nextIndex]))
                 }
             }
-            // After finding a string and adding the next n elements,
-            // you might want to skip the elements you just added in the main loop.
-            // This line is optional, depending on your desired behavior.
-            // If you want to continue scanning from the element after the block you just added, uncomment the line below.
+            arrayToReturn.push(team)
             i = i + n;
         }
     }
@@ -65,10 +56,12 @@ export const App = () => {
   useEffect(()=> {
     console.log("You're hitting the useEffect!");
     // console.log("You're hitting me!")
-    axios.get('http://web-app-to-scraper-api-svc:83/scrape')
+    // axios.get('http://web-app-to-scraper-api-svc:83/scrape')
     // axios.get('http://localhost:8081/scrape')
-         .then(res => cast(res.data, 10))
-         .then(data => setMLBGames(data))
+      setMLBGames(cast(dummyData, 10))
+      console.log(mlbGames)
+         // .then(res => cast(res.data, 10))
+         // .then(data => setMLBGames(data))
          // .then(data => setMLBGames(data))
     // reaches out to odds-api and populates this upcoming week's games into state
     //this should be a paganation thing where the ancillary leagueType data is loaded after primary
@@ -94,7 +87,7 @@ export const App = () => {
                   variant={"h3"}>
                   {leagueType}
               </Typography>
-             <OddsMarketplace />
+             <OddsMarketplace mlbGames={mlbGames}/>
             <CreateABetForm games={nflGames}/>
           </Grid2>
         </Grid2>

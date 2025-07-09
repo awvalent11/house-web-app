@@ -2,11 +2,11 @@ import {Colors} from "../assets/Theme";
 import {Box, Typography} from "@mui/material";
 import {OddsDisplay} from "./OddsDisplay";
 import React from "react";
+import MLBTeam from "../MLBTeam";
 
 
 export type DummyMLBCardProps = {
-    teamName:string
-    odds:number[]
+    mlbTeam:MLBTeam
 }
 
 export const DummyMLBCard = (props: DummyMLBCardProps) => {
@@ -36,32 +36,14 @@ export const DummyMLBCard = (props: DummyMLBCardProps) => {
                 }}
             >
                 <h2>
-                    {props.teamName}
+                    {props.mlbTeam.team}
                 </h2>
                 <Box
-                    onClick={toggleOddsFormat}
-                    alignContent={'center'}
+
                 >
-                    <Typography
-                        variant="body1"
-                        noWrap
-                    >
-                        {displayOddsFormat(oddsFormat, props)}
-                    </Typography>
                 </Box>
             </Box>
-            {props.game.startTime && (
-                <Box
-                    paddingTop={'0px'}
-                    marginBottom={'15px'}
-                >
-                    <Typography
-                        variant="caption"
-                    >
-                        Game Day: {props.game.startTime.format('dddd, h:mmA, MMMM DD, YYYY')}
-                    </Typography>
-                </Box>
-            )}
+
             <Box>
                 <Box
                     sx={{
@@ -71,7 +53,7 @@ export const DummyMLBCard = (props: DummyMLBCardProps) => {
                         justifyContent: 'space-evenly'
                     }}
                 >
-                    {props.game.odds.map( odd => {
+                    {props.mlbTeam.odds.map( odd => {
                         return(
                             <Box
                                 sx={{
@@ -80,7 +62,8 @@ export const DummyMLBCard = (props: DummyMLBCardProps) => {
                                     borderColor: '#000000'
                                 }}
                             >
-                                <OddsDisplay odd={odd} oddsFormat={oddsFormat}/>
+                                {/*<OddsDisplay odd={odd} oddsFormat={oddsFormat}/>*/}
+                                {odd}
                             </Box>
                         )}
                     )}

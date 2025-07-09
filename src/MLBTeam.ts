@@ -1,5 +1,5 @@
 class MLBTeam {
-    private team: string;
+    team: string;
     odds: number[];
     constructor(team: string, odds: number[]) {
         this.team = team;

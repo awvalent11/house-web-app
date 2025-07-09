@@ -7,7 +7,7 @@ const teams = [
     'Tigers', 'Nationals', 'Blue', 'Athletics', 'Royals', 'Mariners', 'Dodgers'
 ]
 
-const dummyData = [
+export const dummyData = [
         'Yankees', '-169', '-167', '-165', '-168', '-170', '-165', '-164', '-165', '-165', '-168',
         'Blue', '+138', '+140', '+140', '+138', '+143', '+140', '+138', '+140', '+138', '+138',
         'Padres', '+144', '+145', '+135', '+137', '+140', '+140', '+136', '+138', '+138', '+137',
@@ -48,33 +48,19 @@ function tryCastToInt(element) {
 
 describe('cast function', () => {
 
-    // Test Case 1: Basic scenario with strings and numbers, n=2
-    test('should find Yankees with odds length of 10', () => {
 
+    test('should find Yankees with odds length of 10', () => {
         const cast = (mixedArray, n ) => {
             const arrayToReturn = [];
-
-            // Use a standard for loop to control the index
             for (let i = 0; i < mixedArray.length; i++) {
-                // Check if the current element is a string using the typeof operator
                 if (teams.includes(mixedArray[i])) {
-                    // If it's a string, start extracting the next 'n' elements
-                    // We start the extraction from the element after the current string (i + 1)
                     const team = new MLBTeam(mixedArray[i],[])
                     for (let j = 0; j < n; j++) {
-                          // Calculate the index of the element to be added
                           const nextIndex = i + 1 + j;
-                          // Check if the nextIndex is within the bounds of the array
                           if (nextIndex < mixedArray.length) {
-                              // Add the element to the new array
-                                  team.odds.push(Number(mixedArray[nextIndex]))
-                              // team.odds.push(1)
+                              team.odds.push(Number(mixedArray[nextIndex]))
                           }
                     }
-                    // After finding a string and adding the next n elements,
-                    // you might want to skip the elements you just added in the main loop.
-                    // This line is optional, depending on your desired behavior.
-                    // If you want to continue scanning from the element after the block you just added, uncomment the line below.
                     arrayToReturn.push(team)
                     i = i + n;
                 }
@@ -85,18 +71,11 @@ describe('cast function', () => {
         const n = 10;
         const result = cast(dummyData, n);
 
-        // Expect 2 MLBTeam objects in the result array
-        // expect(result).toHaveLength(2);
         console.log(result)
-        // Verify TeamA
         expect(result[0]).toBeInstanceOf(MLBTeam);
         expect(result[0].team).toBe('Yankees');
         expect(result[0].odds).toEqual([-169, -167, -165, -168, -170, -165, -164, -165, -165, -168]);
 
-        // Verify TeamB
-        // expect(result[1]).toBeInstanceOf(MLBTeam);
-        // expect(result[1].name).toBe('TeamB');
-        // expect(result[1].odds).toEqual([300, 400]);
     });
 
     // Test Case 2: n is 0, should only return MLBTeam objects with empty odds
